@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./LeftPane.css";
 import profilePic from "../../assets/profile_pic.jpg";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Settings = () => {
   const [activePage, setActivePage] = useState(null);
   const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const {logout} = useAuth0();
 
   const redirectToSettings = () => {
     // Redirect to the "settings" route
@@ -28,6 +30,7 @@ const Settings = () => {
   };
 
   const handlePageClick = (page) => {
+    logout({returnTo: window.location.origin});
     setActivePage(page);
     // Add logic to handle navigation or page-specific actions
   };

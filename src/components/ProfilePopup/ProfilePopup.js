@@ -1,6 +1,6 @@
-// ProfilePopup.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Use useNavigate instead of useHistory
+import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0
+import { useNavigate } from "react-router-dom";
 import "./ProfilePopup.css";
 import profileicon from "../../assets/profileicon.jpeg";
 import buy from "../../assets/buy.png";
@@ -9,25 +9,28 @@ import sell5 from "../../assets/sell5.png";
 
 function ProfilePopup({ userEmail }) {
   const [isVisible, setIsVisible] = useState(false);
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
+  const { logout } = useAuth0(); // Destructure logout from useAuth0
+
+  const handleLogout = () => {
+    // Call the logout method from useAuth0
+    logout({ returnTo: window.location.origin });
+  };
 
   const redirectToSettings = () => {
-    // Redirect to the "settings" route
     navigate("/settings");
   };
 
   const redirectToHomePage = () => {
-    // Redirect to the "settings" route
     navigate("/");
   };
 
   const redirectToAddProduct = () => {
-    // Redirect to the "settings" route
     navigate("/addproduct");
   };
 
   const redirectToLogin = () => {
-    // Redirect to the "settings" route
+    handleLogout();
     navigate("/login");
   };
 
@@ -42,7 +45,6 @@ function ProfilePopup({ userEmail }) {
 
       {isVisible && (
         <div className="popup">
-          {/* <p className="email">{userEmail}</p> */}
           <img src={profileicon} alt="Profile Pic" className="profile-pic" />
           <button className="profile-button" onClick={redirectToSettings}>
             Profile
