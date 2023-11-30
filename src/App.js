@@ -126,7 +126,8 @@ function App() {
           {/* Routes */}
           <Route path="/" element={<Login />} />
           <Route path="/homepage" element = {<HomePage/>} />
-          <Route path="/settings" element={isAuthenticated ? <Settings /> : <Login />} />
+          <Route path="/settings" element = {<Settings/>} />
+          {/* <Route path="/settings" element={isAuthenticated ? <Settings /> : <Login />} /> */}
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/orderspage" element={<OrdersPage />} />
           <Route path="/productlist" element={<ProductListPage />} />
