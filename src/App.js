@@ -24,20 +24,20 @@ import ProductListPage from "./pages/ProductList/ProductList";
 import ChatPage from "./pages/ChatPage/ChatPage";
 
 function App() {
-  const userEmail = "f20220063@hyderabad.bits-pilani.ac.in";
-  const images = [
+ const userEmail = "f20220063@hyderabad.bits-pilani.ac.in";
+ const images = [
     { ck1 },
     { ck2 },
     { ck3 },
     { ck4 },
     { ck5 },
     // ... up to 8 images
-  ];
+ ];
 
-  return (
+ return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Login />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/orderspage" element={<OrdersPage />} />
@@ -49,11 +49,10 @@ function App() {
         <Route path="/funds" element={<Funds />} />
       </Routes>
     </Router>
-  );
+ );
 }
 
 export default App;
-
 /*import "./App.css";
 
 import NavigationBar from "./components/NavigationBar/NavigationBar";
@@ -67,4 +66,3 @@ function App() {
 }
 
 export default App;*/
-//hi this is a test
