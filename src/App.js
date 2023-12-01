@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // import React from "react";
 // import NavigationBar from "./components/NavigationBar/NavigationBar";
 // import ProfilePopup from "./components/ProfilePopup/ProfilePopup";
@@ -72,6 +73,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useAuth0, Auth0Provider } from "@auth0/auth0-react"; // Import Auth0-related components
 
 // Import your components and pages here
+=======
+//import React from "react";
+import React, { useState, useEffect } from "react";
+>>>>>>> Stashed changes
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import ProfilePopup from "./components/ProfilePopup/ProfilePopup";
 import HomePage from "./pages/HomePage/HomePage";
@@ -96,12 +101,16 @@ import ProductListPage from "./pages/ProductList/ProductList";
 import ChatPage from "./pages/ChatPage/ChatPage";
 
 function App() {
+<<<<<<< Updated upstream
   const { user, isAuthenticated } = useAuth0(); // Destructuring Auth0 methods
 
   console.log("Current User", user);
   const userEmail = user ? user.email : "";
 
   // Your images array remains unchanged
+=======
+  const userEmail = "f20220063@hyderabad.bits-pilani.ac.in";
+>>>>>>> Stashed changes
   const images = [
     { ck1 },
     { ck2 },
@@ -112,6 +121,7 @@ function App() {
   ];
 
   return (
+<<<<<<< Updated upstream
     <Auth0Provider
           domain="dev-ugbeywhaam2wg1gb.us.auth0.com"
           clientId="PMYUDcxYK0jA1lgu7mdtoEM1btHb5zJU"
@@ -143,6 +153,36 @@ function App() {
       </Routes>
     </Router>
     </Auth0Provider>
+=======
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/addproduct" element={<AddProduct />} />
+        <Route path="/orderspage" element={<OrdersPage />} />
+        <Route path="/productlist" element={<ProductListPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/orderspage" element={<OrdersPage />} />
+        <Route path="/productpage" element={<ProductPage />} />
+        <Route path="/chatpage" element={<ChatPage />} />
+        <Route path="/funds" element={<Funds />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+/*import "./App.css";
+
+import NavigationBar from "./components/NavigationBar/NavigationBar";
+
+function App() {
+
+  return (
+    <div className="App">
+      <NavigationBar />
+    </div>
+>>>>>>> Stashed changes
   );
 }
 
