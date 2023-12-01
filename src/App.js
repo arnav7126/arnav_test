@@ -133,6 +133,7 @@ function App() {
           <Route path="/productlist" element={<ProductListPage />} />
           {/* Add other routes as needed */}
           {/* Example of protected route */}
+          
           <Route
             path="/productpage"
             element={isAuthenticated ? <ProductPage /> : <Login />}
