@@ -156,6 +156,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
+const localStorageUser =
+  JSON.parse(localStorage.getItem("localStorageUserData")) || {};
+
 const Login = () => {
   const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
   const navigate = useNavigate();
@@ -168,17 +171,46 @@ const Login = () => {
       ) {
         console.log("User Information: ", user.name, user.email, user.picture);
 
-        navigate("/homepage");
+        const data = JSON.stringify({
+          //send to backend  // THIS SHOULD SEND A POST REQUEST TO THE BACKEND
+          username: user.name,
+          email: user.email,
+          profileImageUrl: user.picture,
+        });
+
+        console.log(data);
         axios
-          .post("/api/user", {
-            //send to backend
-            name: user.name,
-            email: user.email,
-            picture: user.picture,
+          .post("http://localhost:8080/users", data, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((response) => {
+            // to handle success response and retrieve the returned data
+            console.log(response);
+            if (response.status === 201) {
+              const createdUser = response.data; // Access the created user object
+              console.log("Created User:", createdUser);
+              localStorageUser.userId = createdUser.userId;
+              localStorageUser.profileImageUrl = createdUser.profileImageUrl;
+              localStorageUser.username = createdUser.username;
+              localStorageUser.email = createdUser.email;
+              localStorage.setItem(
+                "localStorageUserData",
+                JSON.stringify(localStorageUser)
+              );
+              console.log("Local Storage User:", localStorageUser);
+            } else {
+              console.error("Unexpected Status:", response.status);
+            }
           })
           .catch((error) => {
             console.log(error);
+            alert("error in posting user");
           });
+
+        // axios.post("http://localhost:8080/users",localStorageUser).then
+        navigate("/homepage");
       } else {
         alert("invalid user");
         // Log out the user if email doesn't meet the criteria
