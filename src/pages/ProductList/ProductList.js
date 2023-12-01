@@ -227,10 +227,15 @@ import ProductComponent from "../../components/ProductComponent/ProductComponent
 import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import "./ProductList.css"; // Your custom CSS file for this component
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function ProductListPage() {
   // State to store selected category and condition
-  const [selectedCategory, setSelectedCategory] = useState("Any");
+  const location = useLocation();
+  const initialState = location.state?.selectedCategory || "Any";
+  const [selectedCategory, setSelectedCategory] = useState(initialState);
+
+  // const [selectedCategory, setSelectedCategory] = useState("Any");
   const [selectedCondition, setSelectedCondition] = useState("Any");
 
   const [products, setProducts] = useState([]);
@@ -249,7 +254,10 @@ function ProductListPage() {
 
     try {
       // Send data to backend using Axios
-      const response = await axios.post("your_backend_endpoint_here", searchObject);
+      const response = await axios.post(
+        "your_backend_endpoint_here",
+        searchObject
+      );
       console.log("Data sent to backend:", response.data);
 
       // Perform additional actions based on backend response if needed
@@ -258,7 +266,6 @@ function ProductListPage() {
       // Handle error if needed
     }
   };
-
 
   useEffect(() => {
     // Simulated fetch function
@@ -342,7 +349,12 @@ function ProductListPage() {
                 {/* ... other conditions */}
               </Dropdown.Menu>
             </Dropdown>
-            <button className="search-with-filter-button" onClick={handleSearch}>Search</button>
+            <button
+              className="search-with-filter-button"
+              onClick={handleSearch}
+            >
+              Search
+            </button>
           </Col>
 
           <Col md={9} className="product-list d-flex flex-wrap">

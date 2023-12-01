@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationBar from "../../components/NavigationBar/NavigationBar"; // Assuming you have this component
 import "./HomePage.css"; // Make sure to create a CSS file with this name
-import PlayArena1 from "../../assets/PlayArena1.jpg";
+//import PlayArena1 from "../../assets/PlayArena1.jpg";
 import misc from "../../assets/misc.png";
 import accessories1 from "../../assets/accessories1.png";
 import books from "../../assets/books.jpg";
@@ -22,9 +22,13 @@ import { useNavigate } from "react-router-dom";
 function HomePage() {
   const navigate = useNavigate();
 
-  const redirectToProductList = () => {
-    navigate("/productlist");
+  const redirectToProductListWithCategory = (category) => {
+    navigate("/productlist", { state: { selectedCategory: category } });
   };
+
+  // const redirectToProductList = () => {
+  //   navigate("/productlist");
+  // };
 
   return (
     <>
@@ -88,7 +92,7 @@ function HomePage() {
             src={books}
             alt="Books"
             className="icon"
-            onClick={redirectToProductList}
+            onClick={() => redirectToProductListWithCategory("Books")}
           />
           <p className="icon-name">Books</p>
         </div>
@@ -97,7 +101,7 @@ function HomePage() {
             src={sports1}
             alt="Sports"
             className="icon"
-            onClick={redirectToProductList}
+            onClick={() => redirectToProductListWithCategory("Sports")}
           />
           <p className="icon-name">Sports</p>
         </div>
@@ -106,7 +110,7 @@ function HomePage() {
             src={electronics}
             alt="Electronics"
             className="icon"
-            onClick={redirectToProductList}
+            onClick={() => redirectToProductListWithCategory("Electronics")}
           />
           <p className="icon-name">Electronics</p>
         </div>
@@ -115,7 +119,7 @@ function HomePage() {
             src={swd}
             alt="SWD"
             className="icon"
-            onClick={redirectToProductList}
+            onClick={() => redirectToProductListWithCategory("SWD")}
           />
           <p className="icon-name">SWD</p>
         </div>
@@ -124,7 +128,7 @@ function HomePage() {
             src={accessories1}
             alt="Accessories"
             className="icon"
-            onClick={redirectToProductList}
+            onClick={() => redirectToProductListWithCategory("Accessories")}
           />
           <p className="icon-name">Accessories</p>
         </div>
@@ -133,7 +137,7 @@ function HomePage() {
             src={misc}
             alt="Misc"
             className="icon"
-            onClick={redirectToProductList}
+            onClick={() => redirectToProductListWithCategory("Miscellaneous")}
           />
           <p className="icon-name">Misc</p>
         </div>
