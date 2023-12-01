@@ -38,9 +38,7 @@
 
 // export default Login;
 
-
 // //trial 1
-
 
 // import React, { useEffect } from "react";
 // import { useAuth0 } from "@auth0/auth0-react";
@@ -110,7 +108,7 @@
 //  useEffect(() => {
 //     if (!isLoading && isAuthenticated) {
 //         console.log("User Information: ", user.name, user.email, user.picture);
- 
+
 //         navigate("/homepage");
 //         axios
 //             .post("/api/user", {        //send to backend
@@ -165,15 +163,10 @@ const Login = () => {
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       if (
-        (user.email.startsWith("f")) ||
-        (user.email.endsWith("@hyderabad.bits-pilani.in"))
+        user.email.startsWith("f") ||
+        user.email.endsWith("@hyderabad.bits-pilani.in")
       ) {
-        console.log(
-          "User Information: ",
-          user.name,
-          user.email,
-          user.picture
-        );
+        console.log("User Information: ", user.name, user.email, user.picture);
 
         navigate("/homepage");
         axios
@@ -187,7 +180,7 @@ const Login = () => {
             console.log(error);
           });
       } else {
-        alert("invalid user")
+        alert("invalid user");
         // Log out the user if email doesn't meet the criteria
         // You can customize this behavior as per your requirement
         // For demonstration, logging out the user
@@ -208,7 +201,8 @@ const Login = () => {
         <div className="login-rectangle">
           <div className="circle"></div>
           <div className="login-description">
-            Your go-to platform to buy, sell, and bid on high-quality used goods.
+            Your go-to platform to buy, sell, and bid on high-quality used
+            goods.
           </div>
           <div className="login-line"></div>
           <div className="loginText">Login using your account on </div>
@@ -222,5 +216,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

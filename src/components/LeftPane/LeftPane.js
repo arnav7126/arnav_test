@@ -144,7 +144,6 @@
 
 // export default Settings;
 
-
 import React, { useState } from "react";
 import "./LeftPane.css";
 import profilePic from "../../assets/profile_pic.jpg";
@@ -152,44 +151,41 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Settings = () => {
+  const [activePage, setActivePage] = useState(null);
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const { logout } = useAuth0();
 
- const [activePage, setActivePage] = useState(null);
- const navigate = useNavigate(); // Use useNavigate instead of useHistory
- const {logout} = useAuth0();
-
-
- const redirectToSettings = () => {
+  const redirectToSettings = () => {
     // Redirect to the "settings" route
     navigate("/settings");
- };
+  };
 
- const redirectToWallet = () => {
+  const redirectToWallet = () => {
     // Redirect to the "settings" route
     navigate("/wallet");
- };
+  };
 
- const redirectToLogin = () => {
+  const redirectToLogin = () => {
     // Redirect to the "settings" route
     navigate("/login");
- };
+  };
 
- const redirectToOrdersPage = () => {
+  const redirectToOrdersPage = () => {
     // Redirect to the "settings" route
     navigate("/orderspage");
- };
+  };
 
-
- const handlePageClick = (page) => {
+  const handlePageClick = (page) => {
     setActivePage(page);
 
     // Add logic to handle navigation or page-specific actions
- };
+  };
 
- const handleLogout = () => {
-    logout({returnTo: window.location.origin});
- };
+  const handleLogout = () => {
+    logout({ returnTo: window.location.origin });
+  };
 
- return (
+  return (
     <div classname="leftpane-body">
       <div className="leftPane">
         <div className="setting">
@@ -273,10 +269,8 @@ const Settings = () => {
               activePage === "wallet" ? "selected" : ""
             }`}
             onClick={() => {
-
               handlePageClick("wallet");
               redirectToWallet();
-
             }}
           >
             <p>Wallet</p>
@@ -287,10 +281,8 @@ const Settings = () => {
               activePage === "logout" ? "selected" : ""
             }`}
             onClick={() => {
-
               handlePageClick("logout");
               handleLogout();
-
             }}
           >
             <p>Logout</p>
@@ -298,7 +290,7 @@ const Settings = () => {
         </div>
       </div>
     </div>
- );
+  );
 };
 
 export default Settings;

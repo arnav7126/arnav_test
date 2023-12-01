@@ -72,6 +72,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useAuth0, Auth0Provider } from "@auth0/auth0-react"; // Import Auth0-related components
 
 // Import your components and pages here
+
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import ProfilePopup from "./components/ProfilePopup/ProfilePopup";
 import HomePage from "./pages/HomePage/HomePage";
@@ -95,6 +96,27 @@ import Wallet from "./pages/Wallet/Wallet";
 import ProductListPage from "./pages/ProductList/ProductList";
 import ChatPage from "./pages/ChatPage/ChatPage";
 
+//im removing this temporarily
+
+// const localStorageUser = {
+//   name: "",
+//   email: "",
+//   productImageUrl: "",
+//   phoneNumber: "",
+// };
+// const localStorageSearch = {
+//   searchString: "",
+//   category: "",
+//   condition: "",
+// };
+
+// // Store the objects in local storage
+// localStorage.setItem("localStorageUserData", JSON.stringify(localStorageUser));
+// localStorage.setItem(
+//   "localStorageSearchData",
+//   JSON.stringify(localStorageSearch)
+// );
+
 function App() {
   const { user, isAuthenticated } = useAuth0(); // Destructuring Auth0 methods
 
@@ -113,36 +135,37 @@ function App() {
 
   return (
     <Auth0Provider
-          domain="dev-ugbeywhaam2wg1gb.us.auth0.com"
-          clientId="PMYUDcxYK0jA1lgu7mdtoEM1btHb5zJU"
-          redirectUri={window.location.origin}
-          >
-    <Router>
-      <Routes>
-        {/* Wrap the entire app inside Auth0Provider */}
-        {/* <Auth0Provider */}
-          
-        
+      domain="dev-ugbeywhaam2wg1gb.us.auth0.com"
+      clientId="PMYUDcxYK0jA1lgu7mdtoEM1btHb5zJU"
+      redirectUri={window.location.origin}
+    >
+      <Router>
+        <Routes>
+          {/* Wrap the entire app inside Auth0Provider */}
+          {/* <Auth0Provider */}
+
           {/* Routes */}
           <Route path="/" element={<Login />} />
-          <Route path="/homepage" element = {<HomePage/>} />
-          <Route path="/settings" element = {<Settings/>} />
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/settings" element={<Settings />} />
           {/* <Route path="/settings" element={isAuthenticated ? <Settings /> : <Login />} /> */}
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/orderspage" element={<OrdersPage />} />
           <Route path="/productlist" element={<ProductListPage />} />
           {/* Add other routes as needed */}
           {/* Example of protected route */}
-          
-          <Route
+
+          <Route path="/productpage" element={<ProductPage />} />
+          {/* <Route
+
             path="/productpage"
             element={isAuthenticated ? <ProductPage /> : <Login />}
-          />
+          /> */}
           <Route path="/chatpage" element={<ChatPage />} />
           <Route path="/Wallet" element={<Wallet />} />
-        {/* </Auth0Provider> */}
-      </Routes>
-    </Router>
+          {/* </Auth0Provider> */}
+        </Routes>
+      </Router>
     </Auth0Provider>
   );
 }

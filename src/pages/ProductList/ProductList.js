@@ -110,7 +110,7 @@
 //   const [selectedCategory, setSelectedCategory] = useState("Any");
 //   const [selectedCondition, setSelectedCondition] = useState("Any");
 //   const [product, setProducts] = useState([]);
-  
+
 //   useEffect(() => {
 //     // Simulated fetch function
 //     const fetchData = async () => {
@@ -221,7 +221,7 @@
 
 //trial 3
 
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import NavigationBar from "../../components/NavigationBar/NavigationBar"; // Adjust the import path as necessary
 import ProductComponent from "../../components/ProductComponent/ProductComponent"; // Adjust the import path as necessary
 import { Container, Row, Col, Dropdown } from "react-bootstrap";
@@ -232,7 +232,9 @@ function ProductListPage() {
   // State to store selected category and condition
   const [selectedCategory, setSelectedCategory] = useState("Any");
   const [selectedCondition, setSelectedCondition] = useState("Any");
-  const [products, setProducts] = useState([])
+
+  const [products, setProducts] = useState([]);
+
   // Placeholder products array
   //   const products = [
   //     // ... your product data here
@@ -273,11 +275,12 @@ function ProductListPage() {
       }
     };
     fetchData();
- }, []);
+  }, []);
 
   return (
     <>
       <NavigationBar />
+      git
       <Container fluid>
         <Row>
           <Col md={3} className="filter-section">
@@ -347,7 +350,6 @@ function ProductListPage() {
             {products.map((product) => (
               <ProductComponent key={product.id} {...product} />
             ))}
-        
           </Col>
         </Row>
       </Container>
@@ -356,4 +358,3 @@ function ProductListPage() {
 }
 
 export default ProductListPage;
-

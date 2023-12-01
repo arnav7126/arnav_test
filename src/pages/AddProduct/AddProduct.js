@@ -54,6 +54,11 @@ const AddProduct = () => {
     setProductData({ ...productData, productImageUrl: imageArray }); // Update productImageUrl in productData
   };
 
+  // const formattedProductData = {
+  //   ...productData, // Copy other properties
+  //   productImageUrl: productData.productImageUrl.join(',') // Convert array to comma-separated string so that backend wont throw error
+  // };
+
   const navigate = useNavigate();
 
   const prodRedirectToHomePage = () => {
@@ -75,15 +80,16 @@ const AddProduct = () => {
       // Perform other actions on valid basePrice (e.g., submit data)
       // Add your logic here to submit the product data
       // For example:
-      // axios.post('/api/products', productData)
-      //   .then(() => {
-      //     // Handle success
-      //   })
-      //   .catch((error) => {
-      //     // Handle error
-      //   });
-      console.log(productData);
-      prodRedirectToHomePage();
+      axios
+        .post("http://localhost:8080/products", productData)
+        .then(() => {
+          // Handle success
+        })
+        .catch((error) => {
+          // Handle error
+        });
+      // console.log(productData);
+      // prodRedirectToHomePage();
     }
   };
   return (
@@ -103,8 +109,9 @@ const AddProduct = () => {
               <option value="books">Books</option>
               <option value="sports">Sports</option>
               <option value="electronics">Electronics</option>
-              <option value="mess-swap">Mess Swap</option>
-              <option value="others">Others</option>
+              <option value="SWD">SWD</option>
+              <option value="accessories">Accessories</option>
+              <option value="miscellaneous">Miscellaneous</option>
             </select>
           </div>
 
