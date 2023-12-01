@@ -157,30 +157,24 @@ import axios from "axios";
 import "./Login.css";
 
 const Login = () => {
-  const { isAuthenticated, isLoading, loginWithRedirect, userRecieved } =
-    useAuth0();
+  const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       if (
-        userRecieved.email.startsWith("f") ||
-        userRecieved.email.endsWith("@hyderabad.bits-pilani.in")
+        user.email.startsWith("f") ||
+        user.email.endsWith("@hyderabad.bits-pilani.in")
       ) {
-        console.log(
-          "User Information: ",
-          userRecieved.name,
-          userRecieved.email,
-          userRecieved.picture
-        );
+        console.log("User Information: ", user.name, user.email, user.picture);
 
         navigate("/homepage");
         axios
           .post("/api/user", {
             //send to backend
-            name: userRecieved.name,
-            email: userRecieved.email,
-            picture: userRecieved.picture,
+            name: user.name,
+            email: user.email,
+            picture: user.picture,
           })
           .catch((error) => {
             console.log(error);
@@ -195,7 +189,7 @@ const Login = () => {
         //logout();
       }
     }
-  }, [isLoading, isAuthenticated, navigate, userRecieved]);
+  }, [isLoading, isAuthenticated, navigate, user]);
 
   const handleLogin = () => {
     loginWithRedirect();

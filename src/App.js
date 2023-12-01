@@ -96,24 +96,26 @@ import Wallet from "./pages/Wallet/Wallet";
 import ProductListPage from "./pages/ProductList/ProductList";
 import ChatPage from "./pages/ChatPage/ChatPage";
 
-const localStorageUser = {
-  name: "",
-  email: "",
-  productImageUrl: "",
-  phoneNumber: "",
-};
-const localStorageSearch = {
-  searchString: "",
-  category: "",
-  condition: "",
-};
+//im removing this temporarily
 
-// Store the objects in local storage
-localStorage.setItem("localStorageUserData", JSON.stringify(localStorageUser));
-localStorage.setItem(
-  "localStorageSearchData",
-  JSON.stringify(localStorageSearch)
-);
+// const localStorageUser = {
+//   name: "",
+//   email: "",
+//   productImageUrl: "",
+//   phoneNumber: "",
+// };
+// const localStorageSearch = {
+//   searchString: "",
+//   category: "",
+//   condition: "",
+// };
+
+// // Store the objects in local storage
+// localStorage.setItem("localStorageUserData", JSON.stringify(localStorageUser));
+// localStorage.setItem(
+//   "localStorageSearchData",
+//   JSON.stringify(localStorageSearch)
+// );
 
 function App() {
   const { user, isAuthenticated } = useAuth0(); // Destructuring Auth0 methods
