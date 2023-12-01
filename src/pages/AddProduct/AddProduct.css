@@ -69,6 +69,9 @@ h1 {
   padding: 3%;
   border-radius: 10px;
   border-bottom: 20px;
+  display: flex; /*FROM HERE IS CHNAGED*/
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .section {
   background-color: #323232;
@@ -96,6 +99,7 @@ h1 {
 #priceSection {
   flex-direction: row;
   border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 /* Label styles */
@@ -113,6 +117,7 @@ h1 {
   flex: 3;
   padding: 0px;
   border-radius: 10px;
+  margin-top: 5px;
 }
 
 .uploadPhotosLabel {
@@ -208,3 +213,39 @@ h1 {
   font-size: 3vh;
 }
 /* Adjust the width and margin-right as needed */
+
+.timer-desc {
+  border-top: 1px solid black;
+  width: 100%;
+  margin-top: 3px;
+  padding-top: 2px;
+  margin-bottom: 2px;
+  font-size: 20px;
+  color: white;
+}
+
+.timer-section {
+  /*CHANGED*/
+  margin-bottom: 10px;
+}
+
+.timer-label {
+  margin-bottom: 5px;
+  color: white;
+  padding-top: 5px;
+}
+
+.timer-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+/* Optional: Add some styling for the new row */
+#daysSection,
+#daysTextBoxSection,
+#hoursSection,
+#hoursTextBoxSection {
+  width: calc(25% - 10px); /* Adjust the width based on your preference */
+}
