@@ -323,7 +323,7 @@ function ProductListPage() {
           </Col>
 
           <Col md={9} className="product-list d-flex flex-wrap">
-            {/* <ProductComponent /> */}
+            <ProductComponent />
             {products.map((product) => (
               <ProductComponent key={product.id} {...product} />
             ))}
