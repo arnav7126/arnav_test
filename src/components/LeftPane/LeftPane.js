@@ -171,7 +171,12 @@ const Settings = () => {
  const redirectToLogin = () => {
     // Redirect to the "settings" route
     navigate("/login");
+<<<<<<< Updated upstream
  };
+=======
+    // navigate("/");
+  };
+>>>>>>> Stashed changes
 
  const redirectToOrdersPage = () => {
     // Redirect to the "settings" route
