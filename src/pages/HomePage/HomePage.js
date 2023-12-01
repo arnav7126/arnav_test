@@ -42,7 +42,7 @@ function HomePage() {
           </h1>
         </div>
         <div className="home-right-pane">
-          <Carousel classname="carousel">
+          <Carousel className="carousel">
             <Carousel.Item>
               <img
                 className="d-block w-60 image-contain"
