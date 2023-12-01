@@ -2,17 +2,49 @@ import React, { useState } from "react";
 import "./AddProduct.css";
 import NavigationBar from "../../components/NavigationBar/NavigationBar"; // Replace with the actual import path
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {Cloudinary} from "@cloudinary/url-gen"
+
+
+const cloudinary = new Cloudinary({
+  cloud: {
+    cloudName: 'dpeibyaj6',
+  },
+  api: {
+    apiKey: '736533651111549',
+    apiSecret: '2ikscrghPUuYvV0FsFa6coZPnus',
+  },
+});
 
 const AddProduct = () => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [selectedImages2, setSelectedImages2] = useState([]);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const files = e.target.files;
     const imageArray = [];
 
     for (let i = 0; i < files.length; i++) {
-      imageArray.push(URL.createObjectURL(files[i]));
+      const formData = new FormData();
+      formData.append("file", files[i]);
+      formData.append("upload_preset", "ml_default");
+      
+      try{
+        const response = await fetch('https://api.cloudinary.com/v1_1/dpeibyaj6/image/upload',{
+          method:'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+        imageArray.push(data.secure_url);
+        console.log("Image uploaded URL:" ,data.secure_url);
+      }catch (error){
+        console.error("Error uploading image: ", error);
+      }
+
+
+      
+      //imageArray.push(URL.createObjectURL(files[i]));
     }
 
     setSelectedImages(imageArray);
