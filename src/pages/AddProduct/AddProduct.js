@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import "./AddProduct.css";
-import NavigationBar from "../../components/NavigationBar/NavigationBar"; // Replace with the actual import path
+import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {Cloudinary} from "@cloudinary/url-gen"
-
+import { Cloudinary } from "@cloudinary/url-gen";
 
 const cloudinary = new Cloudinary({
   cloud: {
-    cloudName: 'dpeibyaj6',
+    cloudName: "dpeibyaj6",
   },
   api: {
-    apiKey: '736533651111549',
-    apiSecret: '2ikscrghPUuYvV0FsFa6coZPnus',
+    apiKey: "736533651111549",
+    apiSecret: "2ikscrghPUuYvV0FsFa6coZPnus",
   },
 });
 
 const AddProduct = () => {
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [selectedImages2, setSelectedImages2] = useState([]);
+  const [productData, setProductData] = useState({
+    title: "",
+    description: "",
+    basePrice: "",
+    category: "Books",
+    condition: "New",
+    productImageUrl: [],
+  });
 
   const handleImageChange = async (e) => {
     const files = e.target.files;
@@ -28,43 +33,65 @@ const AddProduct = () => {
       const formData = new FormData();
       formData.append("file", files[i]);
       formData.append("upload_preset", "ml_default");
-      
-      try{
-        const response = await fetch('https://api.cloudinary.com/v1_1/dpeibyaj6/image/upload',{
-          method:'POST',
-          body: formData,
-        });
+
+      try {
+        const response = await fetch(
+          "https://api.cloudinary.com/v1_1/dpeibyaj6/image/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         const data = await response.json();
         imageArray.push(data.secure_url);
-        console.log("Image uploaded URL:" ,data.secure_url);
-      }catch (error){
+        console.log("Image uploaded URL:", data.secure_url);
+      } catch (error) {
         console.error("Error uploading image: ", error);
       }
-
-
-      
-      //imageArray.push(URL.createObjectURL(files[i]));
     }
 
-    setSelectedImages(imageArray);
+    setProductData({ ...productData, productImageUrl: imageArray }); // Update productImageUrl in productData
   };
 
   const navigate = useNavigate();
 
-  const prodredirectToHomePage = () => {
+  const prodRedirectToHomePage = () => {
     // Redirect to the "settings" route
-    navigate("/");
+    navigate("/homepage");
     alert("Your product has been posted");
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProductData({ ...productData, [name]: value });
+  };
+
+  const handlePriceValidation = () => {
+    const isValidPrice = /^\d+$/.test(productData.basePrice);
+    if (!isValidPrice) {
+      alert("Please enter a valid integer base price.");
+    } else {
+      // Perform other actions on valid basePrice (e.g., submit data)
+      // Add your logic here to submit the product data
+      // For example:
+      // axios.post('/api/products', productData)
+      //   .then(() => {
+      //     // Handle success
+      //   })
+      //   .catch((error) => {
+      //     // Handle error
+      //   });
+      console.log(productData);
+      prodRedirectToHomePage();
+    }
+  };
   return (
     <div>
       <div className="nav-bar">
         <NavigationBar />
       </div>
 
-      {/* Centered rounded rectangle */}
       <div className="pdtcenteredRectangle">
         <div className="pdtroundedRectangle">
           <h1>Post Your Product</h1>
@@ -80,16 +107,27 @@ const AddProduct = () => {
               <option value="others">Others</option>
             </select>
           </div>
+
           <div className="containing-4-div">
+            {/* ... Input sections for title, condition, description, and price ... */}
             {/* Big rectangle divided into 4 sections */}
             <div className="section" id="adTitleSection">
-              <div className="label">Ad Title:</div>
-              <input type="text" className="input" />
+              <div className="label">Title:</div>
+              <input
+                type="text"
+                className="input"
+                name="title"
+                onChange={handleInputChange}
+              />
             </div>
 
             <div className="section" id="conditionSection">
               <div className="label">Condition:</div>
-              <select className="input">
+              <select
+                className="input"
+                name="condition"
+                onChange={handleInputChange}
+              >
                 <option value="new">New</option>
                 <option value="used">Used</option>
                 <option value="like-new">Like New</option>
@@ -98,28 +136,37 @@ const AddProduct = () => {
 
             <div className="pdt-description-section" id="descriptionSection">
               <div className="label">Description:</div>
-              <textarea className="input"></textarea>
+              <textarea
+                className="input"
+                name="description"
+                onChange={handleInputChange}
+              ></textarea>
             </div>
 
             <div className="section" id="priceSection">
-              <div className="label">Set a price:</div>
-              <input type="text" className="input" />
+              <div className="label">Set a base price:</div>
+              <input
+                type="text"
+                className="input"
+                name="basePrice"
+                onChange={handleInputChange}
+              />
             </div>
           </div>
+
           <div className="uploadedPhotosSection">
             <div className="uploadPhotosLabel">Upload Photos:</div>
-
             {/* Individual photo boxes */}
-
             <input
               type="file"
               accept="image/*"
               multiple
+              name="productImageUrl"
               onChange={handleImageChange}
             />
             <div className="bottom-container">
-              {/* Individual photo boxes for the bottom container */}
-              {selectedImages.map((imageUrl, index) => (
+              {/* Display uploaded images */}
+              {productData.productImageUrl.map((imageUrl, index) => (
                 <img
                   key={index}
                   src={imageUrl}
@@ -131,7 +178,8 @@ const AddProduct = () => {
           </div>
         </div>
       </div>
-      <button className="submit-button" onClick={prodredirectToHomePage}>
+
+      <button className="submit-button" onClick={handlePriceValidation}>
         Post
       </button>
     </div>

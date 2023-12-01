@@ -9,7 +9,7 @@ import { Button, Form, FormControl } from "react-bootstrap";
 
 const Settings = () => {
   return (
-    <div classname="settings-body">
+    <div className="settings-body">
       <NavigationBar />
       <div className="settingscontainer">
         <LeftPane />
