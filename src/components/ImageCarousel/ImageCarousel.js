@@ -9,7 +9,7 @@ import ck5 from "../../assets/ck5.jpg";
 function ImageCarousel() {
   return (
     <div className="image-carousel">
-      <Carousel classname="carousel">
+      <Carousel className="carousel">
         <Carousel.Item>
           <img
             className="d-block w-60 image-contain"

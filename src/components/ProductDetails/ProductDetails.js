@@ -19,8 +19,8 @@ function ProductDetails({
       {/* First Division */}
       <div className="division first">
         <div className="starting-bid">
-          <h3 classname="biddingprice">{startingBid} 3700 rupees &nbsp;</h3>
-          <h5 classname="startingbid">starting bid</h5>
+          <h3 className="biddingprice">{startingBid} 3700 rupees &nbsp;</h3>
+          <h5 className="startingbid">starting bid</h5>
         </div>
         <div className="heart-icon" onClick={() => setIsFavorite(!isFavorite)}>
           {!isFavorite ? (
