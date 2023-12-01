@@ -64,9 +64,17 @@
   position: relative;
   right: 0%;
   border-bottom: 1px solid #3c3f3d;
-  padding-top: 10px;
+  padding-top: 0px;
 }
 
 .info-section:last-child {
   border-bottom: none;
+}
+
+.profile-input {
+  margin-right: 10px;
+}
+
+.profile-input-size {
+  width: 60%;
 }
