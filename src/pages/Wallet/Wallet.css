@@ -1,4 +1,4 @@
-.funds-right-pane {
+.wallet-right-pane {
   width: 90%;
   margin: 0;
   padding: 10px;
@@ -7,43 +7,43 @@
   background-color: #505050;
 }
 
-.funds-container {
+.wallet-container {
   display: flex;
   width: 100vw; /* Use the entire width of the viewport */
   height: 100vh;
 }
 
-.funds-header {
+.wallet-header {
   color: white;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.funds-details {
+.wallet-details {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.available-funds {
+.available-wallet {
   margin-bottom: 15px;
   font-size: 1.2em;
   color: white;
 }
 
-.funds-input-section {
+.wallet-input-section {
   display: flex;
   align-items: center;
 }
 
-.funds-input {
+.wallet-input {
   padding: 8px;
   margin-right: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.add-funds-button {
+.add-wallet-button {
   background-color: #4caf50; /* Green background */
   color: white;
   padding: 10px 15px;
@@ -52,6 +52,6 @@
   cursor: pointer;
 }
 
-.add-funds-button:hover {
+.add-wallet-button:hover {
   background-color: #45a049; /* Darker green */
 }

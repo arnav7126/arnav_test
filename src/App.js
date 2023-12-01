@@ -19,7 +19,7 @@
 // import AddProduct from "./pages/AddProduct/AddProduct";
 // import ProductComponent from "./components/ProductComponent/ProductComponent";
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import Funds from "./pages/Funds/Funds";
+// import Wallet from "./pages/Wallet/Wallet";
 // import ProductListPage from "./pages/ProductList/ProductList";
 // import ChatPage from "./pages/ChatPage/ChatPage";
 
@@ -46,7 +46,7 @@
 //         <Route path="/orderspage" element={<OrdersPage />} />
 //         <Route path="/productpage" element={<ProductPage />} />
 //         <Route path="/chatpage" element={<ChatPage />} />
-//         <Route path="/funds" element={<Funds />} />
+//         <Route path="/Wallet" element={<Wallet />} />
 //       </Routes>
 //     </Router>
 //  );
@@ -91,7 +91,7 @@ import OrdersPage from "./pages/OrdersPane/OrdersPane";
 import ProductDescription from "./components/ProductDescription/ProductDescription";
 import AddProduct from "./pages/AddProduct/AddProduct";
 import ProductComponent from "./components/ProductComponent/ProductComponent";
-import Funds from "./pages/Funds/Funds";
+import Wallet from "./pages/Wallet/Wallet";
 import ProductListPage from "./pages/ProductList/ProductList";
 import ChatPage from "./pages/ChatPage/ChatPage";
 
@@ -138,7 +138,7 @@ function App() {
             element={isAuthenticated ? <ProductPage /> : <Login />}
           />
           <Route path="/chatpage" element={<ChatPage />} />
-          <Route path="/funds" element={<Funds />} />
+          <Route path="/Wallet" element={<Wallet />} />
         {/* </Auth0Provider> */}
       </Routes>
     </Router>
