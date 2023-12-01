@@ -14,9 +14,9 @@
 //     navigate("/settings");
 //   };
 
-//   const redirectToFunds = () => {
+//   const redirectToWallet = () => {
 //     // Redirect to the "settings" route
-//     navigate("/funds");
+//     navigate("/wallet");
 //   };
 
 //   const redirectToLogin = () => {
@@ -119,7 +119,7 @@
 //             }`}
 //             onClick={() => {
 //               handlePageClick("wallet");
-//               redirectToFunds();
+//               redirectToWallet();
 //             }}
 //           >
 //             <p>Wallet</p>
@@ -161,9 +161,9 @@ const Settings = () => {
     navigate("/settings");
  };
 
- const redirectToFunds = () => {
+ const redirectToWallet = () => {
     // Redirect to the "settings" route
-    navigate("/funds");
+    navigate("/wallet");
  };
 
  const redirectToLogin = () => {
@@ -270,7 +270,7 @@ const Settings = () => {
             }`}
             onClick={() => {
               handlePageClick("wallet");
-              redirectToFunds();
+              redirectToWallet();
             }}
           >
             <p>Wallet</p>
