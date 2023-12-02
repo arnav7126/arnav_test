@@ -7,6 +7,9 @@ import buy from "../../assets/buy.png";
 import logout1 from "../../assets/logout1.png";
 import sell5 from "../../assets/sell5.png";
 
+const localStorageUser =
+  JSON.parse(localStorage.getItem("localStorageUserData")) || {};
+
 function ProfilePopup({ userEmail }) {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
@@ -37,7 +40,7 @@ function ProfilePopup({ userEmail }) {
   return (
     <>
       <img
-        src={profileicon}
+        src={localStorageUser.profileImageUrl}
         alt="Profile"
         className="profile-icon"
         onClick={() => setIsVisible(!isVisible)}
@@ -45,7 +48,11 @@ function ProfilePopup({ userEmail }) {
 
       {isVisible && (
         <div className="popup">
-          <img src={profileicon} alt="Profile Pic" className="profile-pic" />
+          <img
+            src={localStorageUser.profileImageUrl}
+            alt="Profile Pic"
+            className="profile-pic"
+          />
           <button className="profile-button" onClick={redirectToSettings}>
             Profile
           </button>

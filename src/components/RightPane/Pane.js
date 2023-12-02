@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./RightPane.css"; // Ensure your CSS styles are defined as needed
 import { Button, Form } from "react-bootstrap";
 
+const localStorageUser =
+  JSON.parse(localStorage.getItem("localStorageUserData")) || {};
+
 const Pane = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -23,9 +26,12 @@ const Pane = () => {
         <h2>Profile</h2>
       </div>
       <div className="profile-details">
-        <div className="profilePicture1"></div>
-        <h1 className="name">Rohan Sabu</h1>
-        <p className="email">f20220211@hyderabad.bits-pilani.ac.in</p>
+        <img
+          src={localStorageUser.profileImageUrl}
+          className="profilePicture1"
+        ></img>
+        <h1 className="name">{localStorageUser.username}</h1>
+        <p className="email">{localStorageUser.email}</p>
       </div>
       <div className="info-box">
         <div className="info-section">
