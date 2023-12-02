@@ -42,6 +42,17 @@
   margin-right: 10px; /* Spacing between input field and button */
 }
 
+.message-box {
+  background-color: #1f8aff;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  word-wrap: break-word;
+  margin-right: 10px;
+  color: white;
+  align-items: right;
+}
+
 /* .send-button {
     
   } */
