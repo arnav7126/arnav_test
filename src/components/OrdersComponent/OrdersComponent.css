@@ -1,0 +1,45 @@
+.order-item {
+  height: 20%;
+  width: 80%;
+  border-radius: 10px;
+  background-color: rgb(65, 65, 65);
+  display: flex;
+  padding-left: 2%;
+  align-items: center; /* Center children vertically */
+  margin-bottom: 20px;
+}
+
+.order-image {
+  width: 17%;
+  height: 90%;
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.order-details {
+  margin-left: 20px;
+  flex: 1;
+}
+
+.book-info h3 {
+  font-weight: bold;
+  color: #fff;
+}
+
+.purchase-info p {
+  font-size: 105%;
+}
+
+.additional-image {
+  width: 5%;
+  background-color: #ccc;
+}
+
+.sold-for {
+  color: black;
+}
+
+.orders-heading {
+  font-size: 135%;
+  color: #ccc;
+}
