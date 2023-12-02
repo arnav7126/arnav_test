@@ -206,7 +206,7 @@ const Login = () => {
           })
           .catch((error) => {
             console.log(error);
-            alert("error in posting user");
+            alert("already a user"); // I THINK THATS WHAT THIS MEANS
           });
 
         // axios.post("http://localhost:8080/users",localStorageUser).then
