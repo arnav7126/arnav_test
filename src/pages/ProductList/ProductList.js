@@ -146,6 +146,17 @@ function ProductListPage() {
                 {/* ... other conditions */}
               </Dropdown.Menu>
             </Dropdown>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchString}
+              onChange={(e) => setSearchString(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearch();
+                }
+              }}
+            />
             <button
               className="search-with-filter-button"
               onClick={handleSearch}
@@ -156,6 +167,8 @@ function ProductListPage() {
 
           <Col md={9} className="product-list d-flex flex-wrap">
             <ProductComponent />
+            <ProductComponent />
+
             {products.map((product) => (
               <ProductComponent key={product.id} {...product} />
             ))}

@@ -130,7 +130,7 @@ function NavigationBar({ userEmail }) {
         />
       </div>
       <div className="navbar-right" style={{ width: "30%" }}>
-        <Form className="search-bar" onSubmit={handleSearch}>
+        {/* <Form className="search-bar" onSubmit={handleSearch}>
           <FormControl
             type="search"
             placeholder="Search..."
@@ -138,7 +138,7 @@ function NavigationBar({ userEmail }) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-        </Form>
+        </Form> */}
 
         <img
           src={searchicon}
