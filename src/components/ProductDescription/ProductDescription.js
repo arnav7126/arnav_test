@@ -12,7 +12,7 @@ const ProductDescription = ({ category, condition, description }) => {
         <div className="left-pane">Condition:</div>
         <div className="product-description-right-pane">{condition}</div>
       </div>
-      <div className="pdtdescriptionsection">{description}Details: </div>
+      <div className="pdtdescriptionsection">{description}Description: </div>
     </div>
   );
 };

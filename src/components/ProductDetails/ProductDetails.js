@@ -66,7 +66,7 @@ function ProductDetails({
       {/* Second Division */}
       <div className="division-second">
         <h3>Title: {userTitle}</h3> {/* Dynamic user-provided title */}
-        <h5>Description: {userDescription}</h5>{" "}
+        {/* <h5>Description: {userDescription}</h5>{" "} */}
         {/* Dynamic user-provided description */}
       </div>
 
@@ -99,7 +99,7 @@ function ProductDetails({
 
       {/* Fourth Division */}
       <div className="division fourth">
-        <h2>bidding ends in</h2>
+        <h2>Bidding ends in</h2>
         <div className="countdown-timer">
           <CountdownTimer targetTime={countdownToTime} />
         </div>
