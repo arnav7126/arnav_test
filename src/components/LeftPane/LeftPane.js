@@ -150,6 +150,9 @@ import profilePic from "../../assets/profile_pic.jpg";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
+const localStorageUser =
+  JSON.parse(localStorage.getItem("localStorageUserData")) || {};
+
 const Settings = () => {
   const [activePage, setActivePage] = useState(null);
   const navigate = useNavigate(); // Use useNavigate instead of useHistory
@@ -186,7 +189,7 @@ const Settings = () => {
   };
 
   return (
-    <div classname="leftpane-body">
+    <div className="leftpane-body">
       <div className="leftPane">
         <div className="setting">
           <h1>Settings</h1>
@@ -203,13 +206,16 @@ const Settings = () => {
         >
           <div className="profileContent">
             <div className="profilePicture">
-              <img src={profilePic} className="profilePicture" />
+              <img
+                src={localStorageUser.profileImageUrl}
+                className="profilePicture"
+              />
             </div>
             <div className="profileInfo">
               <div>
-                <h3>Name</h3>
+                <h3>{localStorageUser.username} </h3>
               </div>
-              <div>Student ID</div>
+              <div>{localStorageUser.email}</div>
             </div>
           </div>
         </div>

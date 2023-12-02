@@ -24,7 +24,7 @@
   justify-content: center;
   width: 150px;
   height: 150px;
-  background-image: url("../../assets/profile_pic.jpg"); /* Replace with the actual local path to your image */
+  /* background-image: url("../../assets/profile_pic.jpg"); Replace with the actual local path to your image */
   background-size: cover;
   border-radius: 50%;
   margin: 0 auto; /* Centers the element horizontally by setting left and right margins to auto */

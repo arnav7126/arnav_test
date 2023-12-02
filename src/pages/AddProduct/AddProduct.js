@@ -513,6 +513,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Cloudinary } from "@cloudinary/url-gen";
 
+const localStorageUser =
+  JSON.parse(localStorage.getItem("localStorageUserData")) || {};
+
 const cloudinary = new Cloudinary({
   cloud: {
     cloudName: "dpeibyaj6",
@@ -606,27 +609,48 @@ const AddProduct = () => {
         biddingEndTimestamp
       ).toISOString();
 
-      console.log("Current Timestamp (Java format):", currentJavaTimestamp);
-      console.log(
-        "Bidding Start Timestamp (Java format):",
-        biddingStartJavaTimestamp
-      );
-      console.log(
-        "Bidding End Timestamp (Java format):",
-        biddingEndJavaTimestamp
-      );
+      const data = JSON.stringify({
+        //send to backend  // THIS SHOULD SEND A POST REQUEST TO THE BACKEND
+        title: productData.title,
+        condition: productData.condition,
+        category: productData.category,
+        description: productData.description,
+        basePrice: productData.basePrice,
+        sellerId: localStorageUser.userId,
+        productImageUrl: productData.productImageUrl,
+        bidStartTime: biddingStartJavaTimestamp,
+        bidEndTime: biddingEndJavaTimestamp,
+      });
+
+      // console.log("Current Timestamp (Java format):", currentJavaTimestamp);
+      // console.log(
+      //   "Bidding Start Timestamp (Java format):",
+      //   biddingStartJavaTimestamp
+      // );
+      // console.log(
+      //   "Bidding End Timestamp (Java format):",
+      //   biddingEndJavaTimestamp
+      // );
 
       axios
-        .post("http://localhost:8080/products", {
-          productData,
-          biddingStartTimestamp,
-          biddingEndTimestamp,
+        .post("http://localhost:8080/products", data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
-        .then(() => {
-          // Handle success
+        .then((response) => {
+          // to handle success response and retrieve the returned data
+          console.log(response);
+          if (response.status === 201) {
+            const createdUser = response.data; // Access the created user object
+            console.log("Created User:", createdUser);
+          } else {
+            console.error("Unexpected Status:", response.status);
+          }
         })
         .catch((error) => {
-          // Handle error
+          console.log(error);
+          alert("error in posting user");
         });
 
       prodRedirectToHomePage();
